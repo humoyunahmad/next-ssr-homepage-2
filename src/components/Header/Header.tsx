@@ -5,11 +5,11 @@ import { DesktopHeader } from "./DesktopHeader";
 import { MediaQueryWrapper } from "@src/styles/components";
 import { appBoundary } from "@src/styles/primitives";
 import CategoryCarousal from "../CategoryCarousel";
-import { __IS_PROD__ } from "@src/constants";
+// import { __IS_PROD__ } from "@src/constants";
 
-const BASE_URL = __IS_PROD__
-  ? "https://next-ssr-homepage-2.vercel.app"
-  : "http://localhost:3000";
+const BASE_URL = process.env.NEXT_PUBLIC_VERCEL_URL
+  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+  : "http://localhost:3000"; // Fallback for local dev
 
 export async function Header() {
   const data = await fetch(`${BASE_URL}/api/homepage`, {
