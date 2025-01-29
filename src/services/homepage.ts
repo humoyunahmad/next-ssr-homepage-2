@@ -4,7 +4,7 @@ import { unwrapResponse } from "@src/infra/http";
 import { __IS_PROD__ } from "@src/constants";
 
 const BASE_URL = __IS_PROD__
-  ? "next-ssr-homepage-2.vercel.app"
+  ? "https://next-ssr-homepage-2.vercel.app"
   : "http://localhost:3000";
 
 export const getHomepageData = async () => {
