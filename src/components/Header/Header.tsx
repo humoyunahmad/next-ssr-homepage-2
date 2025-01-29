@@ -17,7 +17,7 @@ export async function Header() {
   }).then((res) => res.json());
 
   const categories = data.categories;
-  console.log("categories", categories);
+
   return (
     <>
       <div className={appBoundary}>

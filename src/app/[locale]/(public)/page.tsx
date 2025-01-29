@@ -44,6 +44,14 @@ export function generateMetadata({ params }: HomePageProps): Metadata {
   });
 }
 
+console.log("******************************");
+console.log("******************************");
+console.log("******************************");
+console.log(process.env.NEXT_PUBLIC_VERCEL_URL);
+console.log("******************************");
+console.log("******************************");
+console.log("******************************");
+
 export default async function HomePage({ params: { locale } }: HomePageProps) {
   unstable_setRequestLocale(locale);
   let homepageData: HomepageDataResponse = {
