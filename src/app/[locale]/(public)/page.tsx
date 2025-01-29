@@ -11,6 +11,7 @@ import { SoumValues } from "@src/components/SoumValues";
 import { getHomepageData } from "@src/services/homepage";
 import { LOCALE } from "@src/infra/helpers/middleware/withLocale.types";
 import Banner from "@src/components/Banners";
+import { HomepageDataResponse } from "@src/contracts";
 
 const LatestNews = dynamicLoading(
   () => import("@src/components/LatestNews/LatestNews"),
@@ -45,8 +46,18 @@ export function generateMetadata({ params }: HomePageProps): Metadata {
 
 export default async function HomePage({ params: { locale } }: HomePageProps) {
   unstable_setRequestLocale(locale);
+  let homepageData: HomepageDataResponse = {
+    categories: [],
+    mostSoldModels: [],
+    banners: { ar: [], en: [] },
+    feeds: [],
+  };
 
-  const homepageData = await getHomepageData();
+  try {
+    homepageData = await getHomepageData();
+  } catch (error) {
+    console.error("Error fetching homepage data", error);
+  }
 
   return (
     <>
