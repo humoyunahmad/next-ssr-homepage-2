@@ -64,7 +64,7 @@ export default async function HomePage({ params: { locale } }: HomePageProps) {
   try {
     homepageData = await getHomepageData();
   } catch (error) {
-    console.error("Error fetching homepage data", error);
+    console.error("[Home Page] Error fetching homepage data", error);
   }
 
   return (
