@@ -1,9 +1,15 @@
 import { HomepageDataResponse } from "@src/contracts";
 import { unwrapResponse } from "@src/infra/http";
 
+import { __IS_PROD__ } from "@src/constants";
+
+const BASE_URL = __IS_PROD__
+  ? "next-ssr-homepage-2.vercel.app"
+  : "http://localhost:3000";
+
 export const getHomepageData = async () => {
-  const data = await fetch("http://localhost:3000/api/homepage", {
-    next: { revalidate: 60 * 10 },
+  const data = await fetch(`${BASE_URL}/api/homepage`, {
+    next: { revalidate: 3600 },
   });
 
   const resp = await data.json();
