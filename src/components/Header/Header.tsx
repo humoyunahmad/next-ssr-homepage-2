@@ -6,6 +6,8 @@ import { MediaQueryWrapper } from "@src/styles/components";
 import { appBoundary } from "@src/styles/primitives";
 import CategoryCarousal from "../CategoryCarousel";
 import { GetCategoryListModel } from "@src/types";
+import DesktopAllCategories from "../AllCategories/Desktop/DesktopAllCategories";
+import MobileAllCategories from "../AllCategories/Mobile/MobileAllCategories";
 // import { __IS_PROD__ } from "@src/constants";
 
 const BASE_URL = process.env.NEXT_PUBLIC_VERCEL_URL
@@ -19,7 +21,7 @@ export async function Header() {
     const data = await fetch(`${BASE_URL}/api/homepage`, {
       next: { revalidate: 3600 },
     }).then((res) => res.json());
-    const categories = data.categories;
+    categories = data.categories;
   } catch (error) {
     console.error("[Header] Error fetching homepage data", error);
   }
@@ -32,7 +34,10 @@ export async function Header() {
           tablet={<DesktopHeader nonAuthComponent={<LoginButton />} />}
         />
       </div>
-
+      <MediaQueryWrapper
+        mobile={<MobileAllCategories />}
+        tablet={<DesktopAllCategories />}
+      />
       <div id="categories-section">
         <CategoryCarousal categories={categories} />
       </div>

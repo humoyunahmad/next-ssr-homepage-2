@@ -3,7 +3,7 @@
 import Image from "next/legacy/image";
 import { useTranslations } from "next-intl";
 
-import vat from "@public/svgs/vat.svg";
+import vat from "@public/images/vat.svg";
 
 import {
   taxNumberStyle,

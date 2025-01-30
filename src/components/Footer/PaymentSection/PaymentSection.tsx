@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import Image from "next/legacy/image";
-import paymentMethods from "@public/svgs/payment_methods.svg";
+import paymentMethods from "@public/images/payment_methods.svg";
 
 import {
   paymentSectionTitle,

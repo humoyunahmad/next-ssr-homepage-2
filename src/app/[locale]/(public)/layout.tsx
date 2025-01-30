@@ -1,8 +1,8 @@
 import { css } from "@panda-styled-system/css";
 
-// import { Footer } from "@src/components/Footer";
+import { Footer } from "@src/components/Footer";
 import { Header } from "@src/components/Header";
-// import { HeaderBanner } from "@src/components/HeaderBanner";
+import { HeaderBanner } from "@src/components/HeaderBanner";
 
 type PublicRootLayoutProps = {
   children: React.ReactNode;
@@ -14,12 +14,13 @@ export default async function HomepageLayout({
   return (
     <>
       <Header />
-      {/* <HeaderBanner /> */}
+      <HeaderBanner />
       <section className={sectionStyles}>
         <main className={css({ flex: 1 })}>{children}</main>
       </section>
       {/* <FooterBanner />
-      <Footer /> */}
+       */}
+      <Footer />
     </>
   );
 }

@@ -44,14 +44,6 @@ export function generateMetadata({ params }: HomePageProps): Metadata {
   });
 }
 
-console.log("******************************");
-console.log("******************************");
-console.log("******************************");
-console.log(process.env.NEXT_PUBLIC_VERCEL_URL);
-console.log("******************************");
-console.log("******************************");
-console.log("******************************");
-
 export default async function HomePage({ params: { locale } }: HomePageProps) {
   unstable_setRequestLocale(locale);
   let homepageData: HomepageDataResponse = {
@@ -77,9 +69,9 @@ export default async function HomePage({ params: { locale } }: HomePageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(newsArticleSchema) }}
       />
-
-      <Banner homepageData={homepageData} />
-
+      <Suspense>
+        <Banner homepageData={homepageData} />
+      </Suspense>
       <SoumValues />
 
       <Suspense fallback={<>LOADING HOMEPAGE PRODUCTS</>}>

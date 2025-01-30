@@ -43,8 +43,6 @@ export default async function LocaleRootLayout({
 
   const direction = locale === "ar" ? "rtl" : "ltr";
 
-  // await fetch();
-
   return (
     <html
       lang={locale}

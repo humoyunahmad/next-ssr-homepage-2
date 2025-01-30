@@ -4,7 +4,6 @@ import { useMemo } from "react";
 
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { HeaderBannerAndBreadCrumbHiddenConditions } from "@src/lib/utils/HeadeBannerAndBreadCrumbHiddenConditions";
 
 import {
   headerBannerRootStyles,
@@ -14,7 +13,6 @@ import {
   BannerLogo,
   textBoxStyles,
 } from "./HeaderBanner.styled";
-import { usePathname } from "@src/i18n/routing";
 import { toUpperCase } from "@src/infra/helpers/utils";
 
 export function HeaderBanner() {
@@ -24,7 +22,6 @@ export function HeaderBanner() {
     brandName: string;
     modelName: "string";
   }>();
-  const pathname = usePathname();
 
   const decodedName = (value: string) => toUpperCase(decodeURIComponent(value));
 
@@ -65,10 +62,6 @@ export function HeaderBanner() {
 
     return `${t("title1")} ${deviceName} ${t("title2")}`;
   }, [brandName?.length, categoryName, deviceName, modelName?.length, t]);
-
-  if (HeaderBannerAndBreadCrumbHiddenConditions(pathname ?? "")) {
-    return null;
-  }
 
   return (
     <section className={headerBannerRootStyles}>
