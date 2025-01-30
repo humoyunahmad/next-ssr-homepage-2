@@ -94,7 +94,7 @@ export const generateAlternativeLinks = (
   pathname: string | Translation,
   locale: keyof Translation
 ): Metadata["alternates"] => {
-  const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000";
+  const baseUrl = "https://next-ssr-homepage-2.vercel.app";
   if (typeof pathname === "string") {
     return {
       canonical: `${baseUrl}/${locale}${pathname}`,
