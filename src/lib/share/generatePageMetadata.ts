@@ -33,7 +33,6 @@ export const generatePageMetadata = ({
   keywords,
   locale,
   pathname,
-  index,
   images,
   blog,
   authors,
@@ -48,12 +47,7 @@ export const generatePageMetadata = ({
     title: title[locale],
     description: description[locale],
     keywords: (keywords ?? defaultKeywords)[locale],
-    robots:
-      ["https://soum.sa", "https://www.soum.sa"].includes(
-        process.env.NEXT_PUBLIC_CLIENT_BASE_URL!
-      ) && index
-        ? "index, follow"
-        : "noindex, nofollow",
+    robots: "index, follow",
     alternates,
     authors: authors ?? [
       {
@@ -100,7 +94,7 @@ export const generateAlternativeLinks = (
   pathname: string | Translation,
   locale: keyof Translation
 ): Metadata["alternates"] => {
-  const baseUrl = process.env.NEXT_PUBLIC_CLIENT_BASE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000";
   if (typeof pathname === "string") {
     return {
       canonical: `${baseUrl}/${locale}${pathname}`,
