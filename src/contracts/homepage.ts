@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 export const AttributeSchema = z.object({
   title: z.object({
@@ -63,11 +63,13 @@ export const CategorySchema = z.object({
   _id: z.string(),
   categoryNameAr: z.string(),
   categoryName: z.string(),
-  position: z.string(),
   type: z.string(),
+  position: z.string(),
   category_name_ar: z.string(),
   category_name: z.string(),
   mini_category_icon: z.string(),
+  created_at: z.string(),
+  updated_at: z.string(),
 });
 
 export const BannerSchema = z.object({
@@ -110,4 +112,6 @@ export type Feed = z.infer<typeof FeedSchema>;
 export type Collection = z.infer<typeof CollectionSchema>;
 export type ProductCondition = z.infer<typeof ConditionSchema>;
 export type MostSoldModel = z.infer<typeof MostSoldModelSchema>;
-export type RecentlySoldProductsResponse = z.infer<typeof RecentlySoldProductsResponseSchema>;
+export type RecentlySoldProductsResponse = z.infer<
+  typeof RecentlySoldProductsResponseSchema
+>;

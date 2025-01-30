@@ -8,22 +8,17 @@ import CategoryCarousal from "../CategoryCarousel";
 import { GetCategoryListModel } from "@src/types";
 import DesktopAllCategories from "../AllCategories/Desktop/DesktopAllCategories";
 import MobileAllCategories from "../AllCategories/Mobile/MobileAllCategories";
+import { getHomepageData } from "@src/services/homepage";
 // import { __IS_PROD__ } from "@src/constants";
-
-const BASE_URL = process.env.NEXT_PUBLIC_VERCEL_URL
-  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-  : "http://localhost:3000"; // Fallback for local dev
 
 export async function Header() {
   let categories: GetCategoryListModel[] = [];
 
   try {
-    const data = await fetch(`${BASE_URL}/api/homepage`, {
-      next: { revalidate: 3600 },
-    }).then((res) => res.json());
-    categories = data.categories;
+    const homepageData = await getHomepageData();
+    categories = homepageData.categories as unknown as GetCategoryListModel[];
   } catch (error) {
-    console.error("[Header] Error fetching homepage data", error);
+    console.error("[Home Page] Error fetching homepage data", error);
   }
 
   return (

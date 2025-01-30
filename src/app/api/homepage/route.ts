@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
     await delay(100);
     return NextResponse.json(HARD_CODED_HOMEPAGE_DATA);
   } catch (error) {
-    console.error(error);
+    console.error("*** [api/homepage] *** ", error);
     return NextResponse.json(
       { message: "Something unexpected happened" },
       { status: 500 }
