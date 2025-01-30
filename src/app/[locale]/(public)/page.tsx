@@ -8,10 +8,10 @@ import { newsArticleSchema } from "@src/components/LatestNews";
 import { reviewSchema } from "@src/components/Testimonials";
 import { generatePageMetadata } from "@src/lib/share/generatePageMetadata";
 import { SoumValues } from "@src/components/SoumValues";
-import { getHomepageData } from "@src/services/homepage";
 import { LOCALE } from "@src/infra/helpers/middleware/withLocale.types";
 import Banner from "@src/components/Banners";
 import { HomepageDataResponse } from "@src/contracts";
+import { getHomepageDataAction } from "@src/app/actions/homepage";
 
 const LatestNews = dynamicLoading(
   () => import("@src/components/LatestNews/LatestNews"),
@@ -54,7 +54,7 @@ export default async function HomePage({ params: { locale } }: HomePageProps) {
   };
 
   try {
-    homepageData = await getHomepageData();
+    homepageData = await getHomepageDataAction();
   } catch (error) {
     console.error("[Home Page] Error fetching homepage data", error);
   }
