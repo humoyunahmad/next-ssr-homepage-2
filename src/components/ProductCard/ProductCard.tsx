@@ -18,7 +18,6 @@ import {
   installment_options_container,
   bnpl_payment_icon,
   bnpl_payment_box,
-  helper_text,
   sell_price_text,
   attributesStyle,
   guarantee_badge,
@@ -209,7 +208,7 @@ export function ProductCard(props: ProductCardProps) {
                 <span>{t("currency")}</span>
                 <span> / </span>
                 <span>{t("month")}</span>
-                <span className={helper_text}> {t("with")}</span>
+                <span> {t("with")}</span>
                 <>
                   <span
                     className={bnpl_payment_icon}

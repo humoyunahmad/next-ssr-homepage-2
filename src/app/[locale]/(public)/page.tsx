@@ -28,6 +28,14 @@ interface HomePageProps {
   };
 }
 
+// Add this export to enable ISR
+export const revalidate = 3600;
+
+// Generate static params for all locales
+export async function generateStaticParams() {
+  return [{ locale: "en" }, { locale: "ar" }];
+}
+
 export function generateMetadata({ params }: HomePageProps): Metadata {
   return generatePageMetadata({
     title: {

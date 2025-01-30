@@ -106,10 +106,6 @@ export const bnpl_payment_box = css({
   },
 });
 
-export const helper_text = css({
-  color: "gray-55",
-});
-
 export const sell_price_text = css({
   fontWeight: "normal",
 });

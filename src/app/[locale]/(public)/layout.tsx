@@ -18,8 +18,6 @@ export default async function HomepageLayout({
       <section className={sectionStyles}>
         <main className={css({ flex: 1 })}>{children}</main>
       </section>
-      {/* <FooterBanner />
-       */}
       <Footer />
     </>
   );
